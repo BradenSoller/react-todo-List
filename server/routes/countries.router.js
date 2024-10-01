@@ -18,8 +18,27 @@ router.get('/', (req, res) => {
 })
 
 router.post('/', (req, res) => {
-   
-
-})
+    const query = `
+    INSERT INTO "todos" ("text")
+      VALUES ($1);
+    `
+    const values = [
+      req.body.text
+    ]
+  
+    console.log("dssdcsdc")
+    pool
+      .query(query, values)
+      .then(result => {
+        res.sendStatus(201)
+      })
+      .catch((err) => {
+        console.error('POST route failed:', err)
+        res.sendStatus(500)
+      })
+     
+  });
+  
+  
 
 module.exports = router;
