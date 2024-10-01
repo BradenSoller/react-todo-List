@@ -37,7 +37,26 @@ router.post('/', (req, res) => {
         res.sendStatus(500)
       })
      
-  });
+});
+  
+
+router.put('/:id', (req, res) => {
+  
+  const sqlText = `
+  UPDATE "todos"
+   SET "isComplete" = NOT "isComplete"
+   WHERE "id" = ${req.params.id};
+    `
+
+  pool.query(sqlText)
+  .then((dbResult) =>{
+      res.sendStatus(200);
+  })
+  .catch((dbError)=>{
+      console.log('PUT /status:id failed', dbError)
+      res.sendStatus(500);
+  })
+});
   
   
 
