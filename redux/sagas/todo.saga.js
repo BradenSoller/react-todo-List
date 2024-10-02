@@ -17,8 +17,24 @@ import axios from "axios";
 
  }
 
+ function* postTodos(action) {
+    console.log("boo", action.payload);
+    try {
+      const response = yield axios({
+        method: "POST",
+        url: "/api/todo",
+        data: action.payload
+      });
+      yield getAllTodos()
+    }
+    catch (error) {
+        console.error('Shelf POST failed:', error)
+    }
+  }
+
 
 export default function* TodoSaga() {
-    yield takeLatest("FETCH_ALL_TODOS", getAllTodos)
+    yield takeLatest("FETCH_ALL_TODOS", getAllTodos),
+    yield takeLatest("POST_TODOS", postTodos)
 
    }
