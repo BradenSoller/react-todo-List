@@ -26,6 +26,10 @@ function HomePage() {
        window.scrollTo(0, 0);
  }, []);
 
+   return (
+   
 
+      <div><h1>booty</h1></div>
+)
 }
 export default HomePage;
