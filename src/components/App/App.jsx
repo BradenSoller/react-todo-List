@@ -11,7 +11,10 @@ import { useEffect, useState } from 'react';
 import './App.css';
 import HomePage from '../homePage/todoHome';
 function App() {
+
+    return (
     <Router>
+        <Redirect exact from="/" to="/home" />
         <Route exact path="/home">
             <HomePage/>
         </Route>
@@ -23,7 +26,7 @@ function App() {
     </Router>
 
 
-
+    )
 
 }
 
