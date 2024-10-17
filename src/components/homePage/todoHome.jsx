@@ -15,7 +15,10 @@ import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined
 
 function HomePage() {
 
-const Todos = useSelector((store) => store.AllTodos)
+   const Todos = useSelector((store) => store.AllTodos)
+   
+   let [todo, setTodo] = useState('')
+   
     
  useEffect(() => {
     dispatch({ type: "FETCH_ALL_ANIME" });
