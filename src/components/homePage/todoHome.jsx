@@ -17,7 +17,8 @@ function HomePage() {
    const Todos = useSelector((store) => store.AllTodos)
    
    let [todo, setTodo] = useState('')
-   
+
+   const dispatch = useDispatch()
     
  useEffect(() => {
     dispatch({ type: "FETCH_ALL_ANIME" });
