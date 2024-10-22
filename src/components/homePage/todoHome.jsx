@@ -10,6 +10,7 @@ import StarOutlinedIcon from "@mui/icons-material/StarOutlined";
 import { Button } from '@mui/material';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
+import { text } from 'express';
 
 
 function HomePage() {
@@ -21,15 +22,35 @@ function HomePage() {
    const dispatch = useDispatch()
     
  useEffect(() => {
-    dispatch({ type: "FETCH_ALL_ANIME" });
+    dispatch({ type: "FETCH_ALL_TODOS" });
 
        window.scrollTo(0, 0);
  }, []);
+   
+   const newTodo = (event) => {
+      event.preventDefault();
+      dispatch({
+         type: "POST_TODOS",
+         payload:{todo: todo}
+      }
+      );
+      setTodo('')
+    
+
+
+   }
 
    return (
    
-
-      <div><h1>booty</h1></div>
+      <div>
+         <input className='inputTodo' type="text"
+            value={todo}
+            onChange={(event) => setTodo(event.target.value)}
+         />
+         <button onClick={newTodo}>submit</button>
+      </div>
+      
+    
 )
 }
 export default HomePage;
